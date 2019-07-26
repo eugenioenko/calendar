@@ -9,6 +9,8 @@ import { MonthSelectorComponent } from './components/month-selector/month-select
 import { DayViewComponent } from './components/day-view/day-view.component';
 import { CalendarViewComponent } from './components/calendar-view/calendar-view.component';
 import { calendarReducer } from './reducers/calendar.reducer';
+import { ModalRemindersComponent } from './components/modal-reminders/modal-reminders.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,18 @@ import { calendarReducer } from './reducers/calendar.reducer';
     MonthViewComponent,
     MonthSelectorComponent,
     DayViewComponent,
-    CalendarViewComponent
+    CalendarViewComponent,
+    ModalRemindersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule,
     StoreModule.forRoot({date: calendarReducer})
   ],
+  exports: [ModalRemindersComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalRemindersComponent]
 })
 export class AppModule { }

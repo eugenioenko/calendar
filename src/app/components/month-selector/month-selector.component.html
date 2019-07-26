@@ -6,5 +6,5 @@
             <option *ngFor="let monthName of months; index as index" [ngValue]="index">{{ monthName }}</option>
         </select>
     </div>
-    <button class="btn btn-light"><i class="zmdi zmdi-calendar-note mr-1"></i> Add Note</button>
+    <button class="btn btn-light" (click)="newReminder()"><i class="zmdi zmdi-calendar-note mr-1"></i> Add Note</button>
 </nav>

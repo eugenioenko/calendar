@@ -1,8 +1,13 @@
-:host {
+.day-container {
+    border:1px solid gray;
     display: block;
     height: 100px;
+    padding: 3px;
     width: 100px;
-    border:1px solid gray;
+}
+
+.is-weekend {
+    background-color:  #EEE;
 }
 
 .disabled {

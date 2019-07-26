@@ -12,8 +12,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let week of calendar">
-            <td *ngFor="let day of week">
-                <app-day-view [date]="day" [month]="month"></app-day-view>
+            <td *ngFor="let day of week; index as dayIndex">
+                <app-day-view [date]="day" [month]="month" [weekend]="dayIndex === 0 || dayIndex === 6"></app-day-view>
             </td>
         </tr>
     </tbody>

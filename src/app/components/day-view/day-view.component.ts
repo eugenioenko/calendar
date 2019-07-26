@@ -9,6 +9,7 @@ import * as moment from 'moment';
 export class DayViewComponent implements OnInit {
     @Input() public date: moment.Moment;
     @Input() public month: number;
+    @Input() public weekend: boolean;
 
     constructor() { }
 
