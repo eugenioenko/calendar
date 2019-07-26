@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Su</th>
+            <th>Mo</th>
+            <th>Tu</th>
+            <th>We</th>
+            <th>Th</th>
+            <th>Fr</th>
+            <th>Sa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let week of calendar">
+            <td *ngFor="let day of week">
+                <app-day-view [date]="day" [month]="month"></app-day-view>
+            </td>
+        </tr>
+    </tbody>
+</table>
