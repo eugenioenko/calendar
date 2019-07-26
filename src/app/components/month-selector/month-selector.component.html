@@ -1,4 +1,4 @@
 <div>
-    <input type="number" [(ngModel)]="year">
-    <input type="number" [(ngModel)]="month">
+    <input type="number" [(ngModel)]="year" (ngModelChange)="dateChanged()">
+    <input type="number" [(ngModel)]="month" (ngModelChange)="dateChanged()">
 </div>
