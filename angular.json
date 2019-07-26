@@ -115,6 +115,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "calendar"
+    }
+  },
+  "defaultProject": "calendar",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

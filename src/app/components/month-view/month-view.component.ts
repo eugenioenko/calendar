@@ -4,7 +4,7 @@ import * as moment from 'moment';
 @Component({
     selector: 'app-month-view',
     templateUrl: './month-view.component.html',
-    styleUrls: ['./month-view.component.css']
+    styleUrls: ['./month-view.component.scss']
 })
 export class MonthViewComponent implements OnChanges {
     @Input() public month: number;

@@ -6,7 +6,7 @@ import { ModalRemindersComponent } from '../modal-reminders/modal-reminders.comp
 @Component({
     selector: 'app-month-selector',
     templateUrl: './month-selector.component.html',
-    styleUrls: ['./month-selector.component.css']
+    styleUrls: ['./month-selector.component.scss']
 })
 export class MonthSelectorComponent {
     @Input() public month: number;

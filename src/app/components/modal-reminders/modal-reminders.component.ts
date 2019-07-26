@@ -4,7 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
     selector: 'app-modal-reminders',
     templateUrl: './modal-reminders.component.html',
-    styleUrls: ['./modal-reminders.component.css']
+    styleUrls: ['./modal-reminders.component.scss']
 })
 export class ModalRemindersComponent implements OnInit {
 
