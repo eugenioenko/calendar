@@ -21,7 +21,7 @@ export class MonthViewComponent implements OnChanges {
         for (let week = startWeek; week < endWeek; ++week) {
             this.calendar.push(
                 Array(7).fill(0).map(
-                    (n, dayOfWeek) => moment()
+                    (n, dayOfWeek) => moment([this.year])
                         .week(week)
                         .startOf('week')
                         .add(dayOfWeek, 'day')

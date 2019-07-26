@@ -9,6 +9,8 @@ import { CalendarModel } from 'src/app/models/calendar.model';
 export class MonthSelectorComponent {
     @Input() public month: number;
     @Input() public year: number;
+    public months = ['January', 'February', 'March', 'April', 'May',
+        'June', 'July', 'August', 'September', 'October', 'November', 'Dicember'];
 
     constructor(private store: Store<CalendarModel>) { }
 

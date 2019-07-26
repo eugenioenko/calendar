@@ -1,4 +1,10 @@
-<div>
-    <input type="number" [(ngModel)]="year" (ngModelChange)="dateChanged()">
-    <input type="number" [(ngModel)]="month" (ngModelChange)="dateChanged()">
-</div>
+
+<nav class="navbar">
+    <div class="form-inline text-right">
+        <input type="number" class="form-control year-control mr-2" [(ngModel)]="year" (ngModelChange)="dateChanged()">
+        <select class="form-control" [(ngModel)]="month" (ngModelChange)="dateChanged()">
+            <option *ngFor="let monthName of months; index as index" [ngValue]="index">{{ monthName }}</option>
+        </select>
+    </div>
+    <button class="btn btn-light"><i class="zmdi zmdi-calendar-note mr-1"></i> Add Note</button>
+</nav>
