@@ -1,19 +1,24 @@
-<table>
+<table class="table table-bordered">
     <thead>
-        <tr>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
+        <tr class="bg-primary text-white text-center">
+            <td>Sunday</td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>tdursday</td>
+            <td>Friday</td>
+            <td>Saturday</td>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let week of calendar">
-            <td *ngFor="let day of week; index as dayIndex">
-                <app-day-view [date]="day" [month]="month" [weekend]="dayIndex === 0 || dayIndex === 6"></app-day-view>
+            <td class="p-0" *ngFor="let day of week; index as dayIndex">
+                <app-day-view [date]="day"
+                              [month]="month"
+                              [year]="year"
+                              [reminders]="getReminders(day)"
+                              [weekend]="dayIndex === 0 || dayIndex === 6">
+                </app-day-view>
             </td>
         </tr>
     </tbody>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { State, Store } from '@ngrx/store';
 import * as moment from 'moment';
+import { CalendarModel } from 'src/app/models/calendar.model';
+import { ReminderModel } from 'src/app/models/reminder.model';
 
 @Component({
     selector: 'app-calendar-view',
@@ -9,16 +11,12 @@ import * as moment from 'moment';
 })
 
 export class CalendarViewComponent implements OnInit {
-    public month = moment().month();
-    public year = moment().year();
 
-    constructor(private store: Store<any>) { }
+
+    constructor(private store: Store<{calendar: CalendarModel}>) { }
 
     public ngOnInit() {
-        this.store.subscribe(res => {
-            this.month = res.date.month;
-            this.year = res.date.year;
-        });
+
     }
 
 }

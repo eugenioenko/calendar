@@ -1,17 +1,28 @@
 import { CalendarModel } from '../models/calendar.model';
-import * as moment from 'moment';
 
+const stored = localStorage.getItem('calendar');
+let initial: CalendarModel;
+if (initial !== null) {
+    try {
+        initial = JSON.parse(stored);
+    } catch (error) {
+        initial = null;
+    }
+}
+if (initial === null) {
+    initial = new CalendarModel();
+}
 
-const initial = new CalendarModel();
-initial.month = moment().month();
-initial.year = moment().year();
 export const calendarReducer = (state: CalendarModel = initial, {type, payload}) => {
     switch (type) {
         case 'date_change':
             state.month = payload.month;
             state.year = payload.year;
-            return state;
-        default:
-            return state;
+            break;
+        case 'add_reminder':
+            state.reminders.push(payload);
+            break;
     }
+    localStorage.setItem('calendar', JSON.stringify(state));
+    return state;
 };

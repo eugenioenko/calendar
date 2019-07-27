@@ -1,5 +1,4 @@
 .day-container {
-    border:1px solid gray;
     display: block;
     height: 100px;
     padding: 3px;
@@ -7,7 +6,7 @@
 }
 
 .is-weekend {
-    background-color:  #EEE;
+    background-color:  #FCFCFF;
 
     .date-indicator {
         color: blue;

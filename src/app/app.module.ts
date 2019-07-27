@@ -25,7 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     FormsModule,
     NgbModule,
-    StoreModule.forRoot({date: calendarReducer})
+    StoreModule.forRoot({calendar: calendarReducer})
   ],
   exports: [ModalRemindersComponent],
   providers: [],

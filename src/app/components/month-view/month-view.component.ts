@@ -1,19 +1,33 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Store } from '@ngrx/store';
+import { CalendarModel } from 'src/app/models/calendar.model';
+import { ReminderModel } from 'src/app/models/reminder.model';
 
 @Component({
     selector: 'app-month-view',
     templateUrl: './month-view.component.html',
     styleUrls: ['./month-view.component.scss']
 })
-export class MonthViewComponent implements OnChanges {
-    @Input() public month: number;
-    @Input() public year: number;
+export class MonthViewComponent implements OnInit {
+    public month: number;
+    public year: number;
     public calendar: Array<Array<moment.Moment>> = [];
+    public reminders: ReminderModel[];
     public readonly weeksToDisplay = 5;
-    constructor() { }
 
-    public ngOnChanges(): void {
+    constructor(private store: Store<{calendar: CalendarModel}>) { }
+
+    public ngOnInit(): void {
+        this.store.subscribe(res => {
+            this.month = res.calendar.month;
+            this.year = res.calendar.year;
+            this.reminders = res.calendar.reminders;
+            this.updateCalendar();
+        });
+    }
+
+    public updateCalendar(): void {
         this.calendar = [];
         const date = moment([this.year, this.month]);
         const startWeek = date.startOf('month').week();
@@ -28,6 +42,17 @@ export class MonthViewComponent implements OnChanges {
                 )
             );
         }
+    }
+
+    public getReminders(date: moment.Moment): ReminderModel[] {
+        const day = date.date();
+        const month = date.month();
+        const year = date.year();
+        return this.reminders
+            .filter(reminder => reminder.day === day)
+            .filter(reminder => reminder.month === month)
+            .filter(reminder => reminder.year === year)
+            .sort((a, b) => new Date(a.date).getTime() -  new Date(b.date).getTime());
     }
 
 }
