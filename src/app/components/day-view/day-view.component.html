@@ -7,6 +7,17 @@
             (click)="viewReminder(reminder.id)">
             {{ reminder.reminder }}
         </li>
-        <li class="badge btn-more btn-outline-secondary text-center w-100" *ngIf="reminders?.length > 3">{{ reminders.length - 3 }} more</li>
     </ul>
+    <div ngbDropdown>
+        <div class="badge btn-more btn-outline-secondary text-center w-100" *ngIf="reminders?.length > 3" ngbDropdownToggle>{{ reminders.length - 3 }} more</div>
+        <div class="dropdown-menu w-100 p-0" ngbDropdownMenu>
+            <button class="overflow-hidden" ngbDropdownItem
+                class="item-reminder overflow-hidden"
+                *ngFor="let reminder of reminders"
+                [ngClass]="'alert-'+reminder.color"
+                (click)="viewReminder(reminder.id)">
+                {{ reminder.reminder }}
+            </button>
+        </div>
+    </div>
 </div>

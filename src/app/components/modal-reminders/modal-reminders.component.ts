@@ -54,12 +54,18 @@ export class ModalRemindersComponent implements OnInit {
             month: reminder.month + 1,
             day: reminder.day
         };
+        const momentDate = moment(reminder.date);
+        const time = {
+            hour: momentDate.hour(),
+            minute: momentDate.minute()
+        };
+
         this.form = this.formBuilder.group({
             reminder: [reminder.reminder, [Validators.required, Validators.maxLength(30)]],
             city: [reminder.city],
             color: [reminder.color],
             date: [date, [Validators.required]],
-            time: [{ hour: 0, minute: 0 }]
+            time: [time]
         });
     }
 

@@ -20,7 +20,6 @@ export class DayViewComponent {
 
     public addReminder(): void {
         const modalRef = this.modalService.open(ModalRemindersComponent);
-        console.log(this.date.toLocaleString());
         modalRef.componentInstance.date = this.date;
     }
 
