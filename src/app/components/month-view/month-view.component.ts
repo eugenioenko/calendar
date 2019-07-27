@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import * as moment from 'moment';
 import { Store } from '@ngrx/store';
 import { CalendarModel } from 'src/app/models/calendar.model';
@@ -7,7 +7,8 @@ import { ReminderModel } from 'src/app/models/reminder.model';
 @Component({
     selector: 'app-month-view',
     templateUrl: './month-view.component.html',
-    styleUrls: ['./month-view.component.scss']
+    styleUrls: ['./month-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MonthViewComponent implements OnInit {
     public month: number;
@@ -16,7 +17,10 @@ export class MonthViewComponent implements OnInit {
     public reminders: ReminderModel[];
     public readonly weeksToDisplay = 5;
 
-    constructor(private store: Store<{calendar: CalendarModel}>) { }
+    constructor(
+        private store: Store<{calendar: CalendarModel}>,
+        private changeDetectorRef: ChangeDetectorRef
+    ) { }
 
     public ngOnInit(): void {
         this.store.subscribe(res => {
@@ -42,6 +46,7 @@ export class MonthViewComponent implements OnInit {
                 )
             );
         }
+        this.changeDetectorRef.markForCheck();
     }
 
     public getReminders(date: moment.Moment): ReminderModel[] {

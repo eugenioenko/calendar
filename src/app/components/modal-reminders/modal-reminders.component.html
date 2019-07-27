@@ -1,12 +1,71 @@
 <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
+    <h4 class="modal-title">New Reminder</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body">
-    <p>Hello, {{name}}!</p>
+<div class="modal-body" [formGroup]="form">
+    <div class="row">
+        <div class="col-sm-6 form-group">
+            <label>Date</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-primary" (click)="datePicker.toggle()"><span class="zmdi zmdi-calendar"></span></button>
+                </div>
+                <input type="text"
+                    class="form-control"
+                    [ngClass]="{ 'is-valid': form.controls.date.valid, 'is-invalid': showError && form.controls.date.invalid }"
+                    placeholder="YYYY-MM-DD"
+                    formControlName="date"
+                    ngbDatepicker
+                    #datePicker="ngbDatepicker"
+                    [firstDayOfWeek]="7"
+                    (focus)="datePicker.open()">
+            </div>
+        </div>
+        <div class="col-sm-6 form-group">
+            <label>Time</label>
+            <ngb-timepicker formControlName="time" [meridian]="meridian" [spinners]="false"></ngb-timepicker>
+        </div>
+        <div class="col-sm-6 form-group">
+            <label>City</label>
+            <input type="text"
+                class="form-control"
+                [ngClass]="{ 'is-valid': form.controls.city.value.length }"
+                formControlName="city">
+        </div>
+        <div class="col-sm-6 form-group">
+            <label>Color</label>
+            <div ngbDropdown>
+                <button class="btn w-100" [ngClass]="'btn-' + form.controls.color.value" ngbDropdownToggle>Select a color</button>
+                <div class="dropdown-menu w-100 p-0" ngbDropdownMenu>
+                    <button class="bg-primary" ngbDropdownItem (click)="form.controls.color.setValue('primary')">&nbsp;</button>
+                    <button class="bg-info" ngbDropdownItem (click)="form.controls.color.setValue('info')">&nbsp;</button>
+                    <button class="bg-success" ngbDropdownItem (click)="form.controls.color.setValue('success')">&nbsp;</button>
+                    <button class="bg-warning" ngbDropdownItem (click)="form.controls.color.setValue('warning')">&nbsp;</button>
+                    <button class="bg-danger" ngbDropdownItem (click)="form.controls.color.setValue('danger')">&nbsp;</button>
+                    <button class="bg-secondary" ngbDropdownItem (click)="form.controls.color.setValue('secondary')">&nbsp;</button>
+                    <button class="bg-dark" ngbDropdownItem (click)="form.controls.color.setValue('dark')">&nbsp;</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 form-group">
+            <label>Reminder</label>
+            <textarea class="form-control"
+                [ngClass]="{ 'is-valid': form.controls.reminder.valid, 'is-invalid': showError && form.controls.reminder.invalid }"
+                formControlName="reminder"></textarea>
+            <div class="text-muted" *ngIf="form.controls.reminder.value.length <= 30">{{ 30 - form.controls.reminder.value.length }} left</div>
+            <div class="text-danger" *ngIf="form.controls.reminder.value.length > 30">0 left</div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('')">Close</button>
+    <div class="col-4 text-left">
+        <button type="button" class="btn btn-danger" *ngIf="reminderId" (click)="deleteReminder()">Delete</button>
+    </div>
+    <div class="col-8 text-right">
+        <button type="button" class="btn btn-outline-secondary mr-2" (click)="activeModal.dismiss('')">Cancel</button>
+        <button type="button" class="btn btn-primary" *ngIf="!reminderId" (click)="addReminder()">Add Reminder</button>
+        <button type="button" class="btn btn-success" *ngIf="reminderId" (click)="addReminder(true)">Update</button>
+    </div>
 </div>

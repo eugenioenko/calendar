@@ -3,8 +3,7 @@ import { State, Store, Action } from '@ngrx/store';
 import { CalendarModel } from 'src/app/models/calendar.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalRemindersComponent } from '../modal-reminders/modal-reminders.component';
-import { CalendarService } from 'src/app/services/calendar.service';
-import { ReminderModel } from 'src/app/models/reminder.model';
+
 @Component({
     selector: 'app-month-selector',
     templateUrl: './month-selector.component.html',
@@ -18,8 +17,7 @@ export class MonthSelectorComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal,
-        private store: Store<{calendar: CalendarModel}>,
-        private calendarService: CalendarService
+        private store: Store<{calendar: CalendarModel}>
     ) { }
 
     public ngOnInit(): void {
@@ -37,16 +35,6 @@ export class MonthSelectorComponent implements OnInit {
     }
 
     public newReminder(): void {
-        // const modalRef = this.modalService.open(ModalRemindersComponent);
-
-        this.calendarService.addReminder({
-            day: 27,
-            year: 2019,
-            month: 6,
-            date: new Date().toISOString(),
-            reminder: 'test',
-            city: 'a',
-            color: 'red'
-        });
+        const modalRef = this.modalService.open(ModalRemindersComponent);
     }
 }

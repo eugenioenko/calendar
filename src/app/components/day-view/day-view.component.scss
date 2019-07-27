@@ -1,18 +1,30 @@
-.day-container {
-    display: block;
+.list-reminders {
     height: 100px;
+    width: 130px;
+}
+
+.item-reminder {
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.date-indicator {
+    cursor: pointer;
     padding: 3px;
-    width: 100px;
 }
 
 .is-weekend {
     background-color:  #FCFCFF;
 
     .date-indicator {
-        color: blue;
+        color: #6068d4;
     }
 }
 
 .disabled {
     opacity: 0.5;
+}
+
+.btn-more {
+    cursor: pointer;
 }

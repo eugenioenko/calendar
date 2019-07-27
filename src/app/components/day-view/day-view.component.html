@@ -1,6 +1,12 @@
 <div class="day-container" [ngClass]="{ 'is-weekend': weekend }">
-    <span class="date-indicator" [ngClass]="{ 'disabled': date.month() !== month }">{{ date.format('DD') }}</span>
-    <ul>
-        <li *ngFor="let reminder of reminders">{{ reminder.city }}</li>
+    <span class="date-indicator" [ngClass]="{ 'disabled': date.month() !== month }" (click)="addReminder()">{{ date.format('DD') }}</span>
+    <ul class="position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden">
+        <li class="item-reminder badge w-100 px-1 text-left overflow-hidden"
+            *ngFor="let reminder of reminders | slice:0:3"
+            [ngClass]="'alert-'+reminder.color"
+            (click)="viewReminder(reminder.id)">
+            {{ reminder.reminder }}
+        </li>
+        <li class="badge btn-more btn-outline-secondary text-center w-100" *ngIf="reminders?.length > 3">{{ reminders.length - 3 }} more</li>
     </ul>
 </div>
