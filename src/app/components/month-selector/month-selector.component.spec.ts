@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonthSelectorComponent } from './month-selector.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { MockStore } from '../../mock/mock-store';
 
 describe('MonthSelectorComponent', () => {
   let component: MonthSelectorComponent;
@@ -8,7 +12,13 @@ describe('MonthSelectorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MonthSelectorComponent ]
+      declarations: [ MonthSelectorComponent ],
+      imports: [
+        FormsModule,
+        NgbModule,
+        ReactiveFormsModule
+      ],
+      providers: [{provide: Store, useClass: MockStore}]
     })
     .compileComponents();
   }));

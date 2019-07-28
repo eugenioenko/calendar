@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MonthViewComponent } from './month-view.component';
+import { Store } from '@ngrx/store';
+import { MockStore } from '../../mock/mock-store';
+import { DayViewComponent } from '../day-view/day-view.component';
 
 describe('MonthViewComponent', () => {
   let component: MonthViewComponent;
@@ -8,7 +10,8 @@ describe('MonthViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MonthViewComponent ]
+      declarations: [ MonthViewComponent, DayViewComponent ],
+      providers: [{provide: Store, useClass: MockStore}]
     })
     .compileComponents();
   }));
