@@ -338,7 +338,7 @@ module.exports = "<div class=\"container\">\r\n    <app-month-selector></app-mon
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"day-container\" [ngClass]=\"{ 'is-weekend': weekend }\">\r\n    <span class=\"date-indicator\" [ngClass]=\"{ 'disabled': date.month() !== month }\" (click)=\"addReminder()\">{{ date.format('DD') }}</span>\r\n    <ul class=\"position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden\">\r\n        <li class=\"item-reminder badge w-100 px-1 text-left overflow-hidden\"\r\n            *ngFor=\"let reminder of reminders | slice:0:3\"\r\n            [ngClass]=\"'alert-'+reminder.color\"\r\n            (click)=\"viewReminder(reminder.id)\">\r\n            {{ reminder.reminder }}\r\n        </li>\r\n        <li class=\"badge btn-more btn-outline-secondary text-center w-100\" *ngIf=\"reminders?.length > 3\">{{ reminders.length - 3 }} more</li>\r\n    </ul>\r\n</div>"
+module.exports = "<div class=\"day-container\" [ngClass]=\"{ 'is-weekend': weekend }\">\r\n    <span class=\"date-indicator\" [ngClass]=\"{ 'disabled': date.month() !== month }\" (click)=\"addReminder()\">{{ date.format('DD') }}</span>\r\n    <ul class=\"position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden\">\r\n        <li class=\"item-reminder badge w-100 px-1 text-left overflow-hidden\"\r\n            *ngFor=\"let reminder of reminders | slice:0:3\"\r\n            [ngClass]=\"'alert-'+reminder.color\"\r\n            (click)=\"viewReminder(reminder.id)\">\r\n            {{ reminder.reminder }}\r\n        </li>\r\n    </ul>\r\n    <div ngbDropdown>\r\n        <div class=\"badge btn-more btn-outline-secondary text-center w-100\" *ngIf=\"reminders?.length > 3\" ngbDropdownToggle>{{ reminders.length - 3 }} more</div>\r\n        <div class=\"dropdown-menu w-100 p-0\" ngbDropdownMenu>\r\n            <button class=\"overflow-hidden\" ngbDropdownItem\r\n                class=\"item-reminder overflow-hidden\"\r\n                *ngFor=\"let reminder of reminders\"\r\n                [ngClass]=\"'alert-'+reminder.color\"\r\n                (click)=\"viewReminder(reminder.id)\">\r\n                {{ reminder.reminder }}\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ CalendarViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".list-reminders {\n  height: 100px;\n  width: 130px;\n}\n\n.item-reminder {\n  text-overflow: ellipsis;\n  cursor: pointer;\n}\n\n.date-indicator {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.is-weekend {\n  background-color: #FCFCFF;\n}\n\n.is-weekend .date-indicator {\n  color: #6068d4;\n}\n\n.disabled {\n  opacity: 0.5;\n}\n\n.btn-more {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9DOlxcY2FsZW5kYXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGRheS12aWV3XFxkYXktdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9kYXktdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSx1QkFBQTtFQUNBLGVBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSx5QkFBQTtBQ0NKOztBRENJO0VBQ0ksY0FBQTtBQ0NSOztBREdBO0VBQ0ksWUFBQTtBQ0FKOztBREdBO0VBQ0ksZUFBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9kYXktdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5saXN0LXJlbWluZGVycyB7XHJcbiAgICBoZWlnaHQ6IDEwMHB4O1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG59XHJcblxyXG4uaXRlbS1yZW1pbmRlciB7XHJcbiAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuLmRhdGUtaW5kaWNhdG9yIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHBhZGRpbmc6IDNweDtcclxufVxyXG5cclxuLmlzLXdlZWtlbmQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogICNGQ0ZDRkY7XHJcblxyXG4gICAgLmRhdGUtaW5kaWNhdG9yIHtcclxuICAgICAgICBjb2xvcjogIzYwNjhkNDtcclxuICAgIH1cclxufVxyXG5cclxuLmRpc2FibGVkIHtcclxuICAgIG9wYWNpdHk6IDAuNTtcclxufVxyXG5cclxuLmJ0bi1tb3JlIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4iLCIubGlzdC1yZW1pbmRlcnMge1xuICBoZWlnaHQ6IDEwMHB4O1xuICB3aWR0aDogMTMwcHg7XG59XG5cbi5pdGVtLXJlbWluZGVyIHtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmRhdGUtaW5kaWNhdG9yIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBwYWRkaW5nOiAzcHg7XG59XG5cbi5pcy13ZWVrZW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZDRkNGRjtcbn1cbi5pcy13ZWVrZW5kIC5kYXRlLWluZGljYXRvciB7XG4gIGNvbG9yOiAjNjA2OGQ0O1xufVxuXG4uZGlzYWJsZWQge1xuICBvcGFjaXR5OiAwLjU7XG59XG5cbi5idG4tbW9yZSB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */"
+module.exports = ".day-container {\n  min-height: 125px;\n}\n\n.list-reminders {\n  height: 75px;\n  width: 130px;\n}\n\n.item-reminder {\n  text-overflow: ellipsis;\n  cursor: pointer;\n}\n\n.date-indicator {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.is-weekend {\n  background-color: #FCFCFF;\n}\n\n.is-weekend .date-indicator {\n  color: #6068d4;\n}\n\n.disabled {\n  opacity: 0.5;\n}\n\n.btn-more {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9DOlxcY2FsZW5kYXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGRheS12aWV3XFxkYXktdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9kYXktdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksdUJBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxlQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0kseUJBQUE7QUNDSjs7QURDSTtFQUNJLGNBQUE7QUNDUjs7QURHQTtFQUNJLFlBQUE7QUNBSjs7QURHQTtFQUNJLGVBQUE7QUNBSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGF5LXZpZXcvZGF5LXZpZXcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGF5LWNvbnRhaW5lciB7XHJcbiAgICBtaW4taGVpZ2h0OiAxMjVweDtcclxufVxyXG5cclxuLmxpc3QtcmVtaW5kZXJzIHtcclxuICAgIGhlaWdodDogNzVweDtcclxuICAgIHdpZHRoOiAxMzBweDtcclxufVxyXG5cclxuLml0ZW0tcmVtaW5kZXIge1xyXG4gICAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5kYXRlLWluZGljYXRvciB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBwYWRkaW5nOiAzcHg7XHJcbn1cclxuXHJcbi5pcy13ZWVrZW5kIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICAjRkNGQ0ZGO1xyXG5cclxuICAgIC5kYXRlLWluZGljYXRvciB7XHJcbiAgICAgICAgY29sb3I6ICM2MDY4ZDQ7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5kaXNhYmxlZCB7XHJcbiAgICBvcGFjaXR5OiAwLjU7XHJcbn1cclxuXHJcbi5idG4tbW9yZSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuIiwiLmRheS1jb250YWluZXIge1xuICBtaW4taGVpZ2h0OiAxMjVweDtcbn1cblxuLmxpc3QtcmVtaW5kZXJzIHtcbiAgaGVpZ2h0OiA3NXB4O1xuICB3aWR0aDogMTMwcHg7XG59XG5cbi5pdGVtLXJlbWluZGVyIHtcbiAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmRhdGUtaW5kaWNhdG9yIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBwYWRkaW5nOiAzcHg7XG59XG5cbi5pcy13ZWVrZW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0ZDRkNGRjtcbn1cbi5pcy13ZWVrZW5kIC5kYXRlLWluZGljYXRvciB7XG4gIGNvbG9yOiAjNjA2OGQ0O1xufVxuXG4uZGlzYWJsZWQge1xuICBvcGFjaXR5OiAwLjU7XG59XG5cbi5idG4tbW9yZSB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -567,7 +567,6 @@ let DayViewComponent = class DayViewComponent {
     }
     addReminder() {
         const modalRef = this.modalService.open(_modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_2__["ModalRemindersComponent"]);
-        console.log(this.date.toLocaleString());
         modalRef.componentInstance.date = this.date;
     }
     viewReminder(id) {
@@ -677,12 +676,17 @@ let ModalRemindersComponent = class ModalRemindersComponent {
             month: reminder.month + 1,
             day: reminder.day
         };
+        const momentDate = moment__WEBPACK_IMPORTED_MODULE_5__(reminder.date);
+        const time = {
+            hour: momentDate.hour(),
+            minute: momentDate.minute()
+        };
         this.form = this.formBuilder.group({
             reminder: [reminder.reminder, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].maxLength(30)]],
             city: [reminder.city],
             color: [reminder.color],
             date: [date, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]],
-            time: [{ hour: 0, minute: 0 }]
+            time: [time]
         });
     }
     addReminder(update = false) {
