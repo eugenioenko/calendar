@@ -1,6 +1,6 @@
-# Calendar View
+## Calendar Month View
 
-###[online hosted demo](https://eugenioenko.github.io/calendar/build/calendar/)
+>[online hosted demo](https://eugenioenko.github.io/calendar/build/calendar/)
 
 ## Development server
 
