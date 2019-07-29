@@ -19,7 +19,7 @@ export class WeatherService {
             .pipe(
                 map((data: any) =>
                     data.list.filter((forecast: any) =>
-                        moment(forecast.dt_txt).startOf('days').isSame(date.startOf('days'))
+                        moment(forecast.dt_txt).startOf('days').isSame(date.clone().startOf('days'))
                     )
                 )
             );

@@ -707,7 +707,7 @@ var ModalRemindersComponent = /** @class */ (function () {
             time: [time]
         });
         if (reminder.city && reminder.city.length) {
-            if (momentDate.startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_5__().startOf('days'))) {
+            if (momentDate.clone().startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_5__().startOf('days'))) {
                 this.getWeather(reminder);
             }
             else {
@@ -766,10 +766,28 @@ var ModalRemindersComponent = /** @class */ (function () {
                 _this.forecast = null;
                 return;
             }
-            _this.forecast = _this.updateTempToFarenheit(data[0]);
+            var index = _this.findTimeIndex(data, momentDate);
+            console.log(index);
+            _this.forecast = _this.updateTempToFarenheit(data[index]);
         }, function (err) {
             _this.forecast = null;
         });
+    };
+    ModalRemindersComponent.prototype.findTimeIndex = function (data, momentDate) {
+        for (var i = 0; i < data.length - 1; ++i) {
+            var aDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i].dt_txt).startOf('hour');
+            var bDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i + 1].dt_txt).startOf('hour');
+            // search time is between two available forecast periods
+            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
+                return i;
+            }
+        }
+        var lastDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[data.length - 1].dt_txt).startOf('hour');
+        // search time is after last available forecast time
+        if (momentDate.isSameOrAfter(lastDate)) {
+            return data.length - 1;
+        }
+        return 0;
     };
     ModalRemindersComponent.prototype.updateTempToFarenheit = function (weather) {
         // Converting Kelvin to Farenheit
@@ -1161,7 +1179,7 @@ var WeatherService = /** @class */ (function () {
         return this.http.get("" + this.forecastUrl + cityName + "&appid=" + this.apiKey)
             .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             return data.list.filter(function (forecast) {
-                return moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.startOf('days'));
+                return moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.clone().startOf('days'));
             });
         }));
     };

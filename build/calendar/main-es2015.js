@@ -701,7 +701,7 @@ let ModalRemindersComponent = class ModalRemindersComponent {
             time: [time]
         });
         if (reminder.city && reminder.city.length) {
-            if (momentDate.startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_5__().startOf('days'))) {
+            if (momentDate.clone().startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_5__().startOf('days'))) {
                 this.getWeather(reminder);
             }
             else {
@@ -757,10 +757,28 @@ let ModalRemindersComponent = class ModalRemindersComponent {
                 this.forecast = null;
                 return;
             }
-            this.forecast = this.updateTempToFarenheit(data[0]);
+            const index = this.findTimeIndex(data, momentDate);
+            console.log(index);
+            this.forecast = this.updateTempToFarenheit(data[index]);
         }, err => {
             this.forecast = null;
         });
+    }
+    findTimeIndex(data, momentDate) {
+        for (let i = 0; i < data.length - 1; ++i) {
+            const aDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i].dt_txt).startOf('hour');
+            const bDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i + 1].dt_txt).startOf('hour');
+            // search time is between two available forecast periods
+            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
+                return i;
+            }
+        }
+        const lastDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[data.length - 1].dt_txt).startOf('hour');
+        // search time is after last available forecast time
+        if (momentDate.isSameOrAfter(lastDate)) {
+            return data.length - 1;
+        }
+        return 0;
     }
     updateTempToFarenheit(weather) {
         // Converting Kelvin to Farenheit
@@ -1134,7 +1152,7 @@ let WeatherService = class WeatherService {
     }
     getForecast(cityName, date) {
         return this.http.get(`${this.forecastUrl}${cityName}&appid=${this.apiKey}`)
-            .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])((data) => data.list.filter((forecast) => moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.startOf('days')))));
+            .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])((data) => data.list.filter((forecast) => moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.clone().startOf('days')))));
     }
     getWeather(cityName) {
         return this.http.get(`${this.weatherUrl}${cityName}&appid=${this.apiKey}`);

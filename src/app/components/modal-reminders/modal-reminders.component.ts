@@ -73,7 +73,7 @@ export class ModalRemindersComponent implements OnInit {
         });
 
         if (reminder.city && reminder.city.length) {
-            if (momentDate.startOf('days').isSame(moment().startOf('days'))) {
+            if (momentDate.clone().startOf('days').isSame(moment().startOf('days'))) {
                 this.getWeather(reminder);
             } else {
                 this.getForecast(reminder, momentDate);
@@ -131,10 +131,31 @@ export class ModalRemindersComponent implements OnInit {
                 this.forecast = null;
                 return;
             }
-            this.forecast = this.updateTempToFarenheit(data[0]);
+            const index = this.findTimeIndex(data, momentDate);
+            console.log(index);
+            this.forecast = this.updateTempToFarenheit(data[index]);
         }, err => {
             this.forecast = null;
         });
+    }
+
+    private findTimeIndex(data: any[], momentDate: moment.Moment): number {
+        for (let i = 0; i < data.length - 1; ++i) {
+            const aDate = moment(data[i].dt_txt).startOf('hour');
+            const bDate = moment(data[i + 1].dt_txt).startOf('hour');
+            // search time is between two available forecast periods
+            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
+                return i;
+            }
+        }
+
+        const lastDate = moment(data[data.length - 1].dt_txt).startOf('hour');
+        // search time is after last available forecast time
+        if (momentDate.isSameOrAfter(lastDate)) {
+            return data.length - 1;
+        }
+
+        return 0;
     }
 
     private updateTempToFarenheit(weather: any): any {
