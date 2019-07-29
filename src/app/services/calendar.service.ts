@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReminderModel } from '../models/reminder.model';
 import { Store } from '@ngrx/store';
-import { CalendarModel } from '../models/calendar.model';
+import { AppStore } from '../models/app.store';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +9,7 @@ import { CalendarModel } from '../models/calendar.model';
 export class CalendarService {
     private reminders: ReminderModel[];
 
-    constructor(private store: Store<{calendar: CalendarModel}>) {
+    constructor(private store: Store<AppStore>) {
         this.store.subscribe(res => {
             this.reminders = res.calendar.reminders;
         });

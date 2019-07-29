@@ -1,4 +1,4 @@
-import { CalendarModel } from './models/calendar.model';
+import { CalendarModel } from './calendar.model';
 
 export interface AppStore {
     calendar: CalendarModel;

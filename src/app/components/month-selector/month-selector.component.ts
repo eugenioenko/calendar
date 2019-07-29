@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CalendarModel } from 'src/app/models/calendar.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalRemindersComponent } from '../modal-reminders/modal-reminders.component';
+import { AppStore } from 'src/app/models/app.store';
 
 @Component({
     selector: 'app-month-selector',
@@ -17,7 +17,7 @@ export class MonthSelectorComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal,
-        private store: Store<{calendar: CalendarModel}>
+        private store: Store<AppStore>
     ) { }
 
     public ngOnInit(): void {

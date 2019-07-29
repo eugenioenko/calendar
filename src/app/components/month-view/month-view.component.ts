@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import * as moment from 'moment';
 import { Store } from '@ngrx/store';
-import { CalendarModel } from 'src/app/models/calendar.model';
 import { ReminderModel } from 'src/app/models/reminder.model';
+import { AppStore } from 'src/app/models/app.store';
 
 @Component({
     selector: 'app-month-view',
@@ -18,7 +18,7 @@ export class MonthViewComponent implements OnInit {
     public readonly weeksToDisplay = 5;
 
     constructor(
-        private store: Store<{calendar: CalendarModel}>,
+        private store: Store<AppStore>,
         private changeDetectorRef: ChangeDetectorRef
     ) { }
 

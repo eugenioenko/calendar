@@ -513,19 +513,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarViewComponent", function() { return CalendarViewComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
-
 
 
 var CalendarViewComponent = /** @class */ (function () {
-    function CalendarViewComponent(store) {
-        this.store = store;
+    function CalendarViewComponent() {
     }
     CalendarViewComponent.prototype.ngOnInit = function () {
     };
-    CalendarViewComponent.ctorParameters = function () { return [
-        { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"] }
-    ]; };
     CalendarViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-calendar-view',
