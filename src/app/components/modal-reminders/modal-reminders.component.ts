@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CalendarService } from 'src/app/services/calendar.service';
 import * as moment from 'moment';
+import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
     selector: 'app-modal-reminders',
@@ -14,11 +15,13 @@ export class ModalRemindersComponent implements OnInit {
     @Input() public date: moment.Moment;
     public form: FormGroup;
     public showError: boolean;
+    public forecast: any;
 
     constructor(
         public activeModal: NgbActiveModal,
         private formBuilder: FormBuilder,
-        private calendarService: CalendarService
+        private calendarService: CalendarService,
+        private weatherService: WeatherService
     ) { }
 
     public ngOnInit() {
@@ -54,7 +57,7 @@ export class ModalRemindersComponent implements OnInit {
             month: reminder.month + 1,
             day: reminder.day
         };
-        const momentDate = moment(reminder.date);
+        const momentDate = moment(new Date(reminder.date));
         const time = {
             hour: momentDate.hour(),
             minute: momentDate.minute()
@@ -67,6 +70,21 @@ export class ModalRemindersComponent implements OnInit {
             date: [date, [Validators.required]],
             time: [time]
         });
+
+        if (reminder.city && reminder.city.length) {
+            const momentDates =  moment([reminder.year, reminder.month, reminder.day]);
+            this.weatherService.getForCity(reminder.city, momentDate).subscribe(data => {
+                if (!data || !data.length) {
+                    this.forecast = null;
+                    return;
+                }
+                this.forecast = data[0];
+                // Converting Kelvin to Farenheit
+                this.forecast.main.temp = Math.round((this.forecast.main.temp - 273.15) * 9 / 5 + 32);
+            }, err => {
+                this.forecast = null;
+            });
+        }
     }
 
     public addReminder(update: boolean = false): void {
@@ -78,7 +96,7 @@ export class ModalRemindersComponent implements OnInit {
         const value = this.form.value;
         const date = moment([
             value.date.year,
-            value.date.month,
+            value.date.month - 1,
             value.date.day,
             value.time && value.time.hour ? value.time.hour : 0,
             value.time && value.time.minute ? value.time.minute : 0

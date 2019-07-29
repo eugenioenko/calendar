@@ -11,6 +11,7 @@ import { CalendarViewComponent } from './components/calendar-view/calendar-view.
 import { calendarReducer } from './reducers/calendar.reducer';
 import { ModalRemindersComponent } from './components/modal-reminders/modal-reminders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({calendar: calendarReducer})
   ],
   exports: [ModalRemindersComponent],

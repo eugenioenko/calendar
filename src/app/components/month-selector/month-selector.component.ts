@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { State, Store, Action } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { CalendarModel } from 'src/app/models/calendar.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalRemindersComponent } from '../modal-reminders/modal-reminders.component';
