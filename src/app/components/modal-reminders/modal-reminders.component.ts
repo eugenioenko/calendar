@@ -132,7 +132,6 @@ export class ModalRemindersComponent implements OnInit {
                 return;
             }
             const index = this.findTimeIndex(data, momentDate);
-            console.log(index);
             this.forecast = this.updateTempToFarenheit(data[index]);
         }, err => {
             this.forecast = null;

@@ -767,7 +767,6 @@ var ModalRemindersComponent = /** @class */ (function () {
                 return;
             }
             var index = _this.findTimeIndex(data, momentDate);
-            console.log(index);
             _this.forecast = _this.updateTempToFarenheit(data[index]);
         }, function (err) {
             _this.forecast = null;
