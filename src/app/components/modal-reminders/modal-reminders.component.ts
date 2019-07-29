@@ -119,7 +119,7 @@ export class ModalRemindersComponent implements OnInit {
 
     public getWeather(reminder: ReminderModel): void {
         this.weatherService.getWeather(reminder.city).subscribe(data => {
-            this.forecast = this.updateTempToFarenheit(data);
+            this.forecast = data;
         }, err => {
             this.forecast = null;
         });
@@ -127,40 +127,11 @@ export class ModalRemindersComponent implements OnInit {
 
     public getForecast(reminder: ReminderModel, momentDate: moment.Moment): void {
         this.weatherService.getForecast(reminder.city, momentDate).subscribe(data => {
-            if (!data || !data.length) {
-                this.forecast = null;
-                return;
-            }
-            const index = this.findTimeIndex(data, momentDate);
-            this.forecast = this.updateTempToFarenheit(data[index]);
+            this.forecast = data;
         }, err => {
             this.forecast = null;
         });
     }
 
-    private findTimeIndex(data: any[], momentDate: moment.Moment): number {
-        for (let i = 0; i < data.length - 1; ++i) {
-            const aDate = moment(data[i].dt_txt).startOf('hour');
-            const bDate = moment(data[i + 1].dt_txt).startOf('hour');
-            // search time is between two available forecast periods
-            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
-                return i;
-            }
-        }
-
-        const lastDate = moment(data[data.length - 1].dt_txt).startOf('hour');
-        // search time is after last available forecast time
-        if (momentDate.isSameOrAfter(lastDate)) {
-            return data.length - 1;
-        }
-
-        return 0;
-    }
-
-    private updateTempToFarenheit(weather: any): any {
-        // Converting Kelvin to Farenheit
-        weather.main.temp = Math.round((weather.main.temp - 273.15) * 9 / 5 + 32);
-        return weather;
-    }
 
 }

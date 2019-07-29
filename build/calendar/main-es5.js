@@ -349,7 +349,7 @@ module.exports = "<div class=\"day-container\" [ngClass]=\"{ 'is-weekend': weeke
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-header\">\n    <h4 class=\"modal-title\">New Reminder</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"activeModal.dismiss('')\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n</div>\n<div class=\"modal-body\" [formGroup]=\"form\">\n    <div class=\"row\">\n        <div class=\"col-sm-6 form-group\">\n            <label>Date</label>\n            <div class=\"input-group\">\n                <div class=\"input-group-prepend\">\n                    <button class=\"btn btn-primary\" (click)=\"datePicker.toggle()\"><span class=\"zmdi zmdi-calendar\"></span></button>\n                </div>\n                <input type=\"text\"\n                    class=\"form-control\"\n                    [ngClass]=\"{ 'is-valid': form.controls.date.valid, 'is-invalid': showError && form.controls.date.invalid }\"\n                    placeholder=\"YYYY-MM-DD\"\n                    formControlName=\"date\"\n                    ngbDatepicker\n                    #datePicker=\"ngbDatepicker\"\n                    [firstDayOfWeek]=\"7\"\n                    (focus)=\"datePicker.open()\">\n            </div>\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>Time</label>\n            <ngb-timepicker formControlName=\"time\" [meridian]=\"meridian\" [spinners]=\"false\"></ngb-timepicker>\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>City</label>\n            <input type=\"text\"\n                class=\"form-control\"\n                [ngClass]=\"{ 'is-valid': form.controls.city.value.length }\"\n                formControlName=\"city\">\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>Color</label>\n            <div ngbDropdown>\n                <button class=\"btn w-100\" [ngClass]=\"'btn-' + form.controls.color.value\" ngbDropdownToggle>Select a color</button>\n                <div class=\"dropdown-menu w-100 p-0\" ngbDropdownMenu>\n                    <button class=\"bg-primary\" ngbDropdownItem (click)=\"form.controls.color.setValue('primary')\">&nbsp;</button>\n                    <button class=\"bg-info\" ngbDropdownItem (click)=\"form.controls.color.setValue('info')\">&nbsp;</button>\n                    <button class=\"bg-success\" ngbDropdownItem (click)=\"form.controls.color.setValue('success')\">&nbsp;</button>\n                    <button class=\"bg-warning\" ngbDropdownItem (click)=\"form.controls.color.setValue('warning')\">&nbsp;</button>\n                    <button class=\"bg-danger\" ngbDropdownItem (click)=\"form.controls.color.setValue('danger')\">&nbsp;</button>\n                    <button class=\"bg-secondary\" ngbDropdownItem (click)=\"form.controls.color.setValue('secondary')\">&nbsp;</button>\n                    <button class=\"bg-dark\" ngbDropdownItem (click)=\"form.controls.color.setValue('dark')\">&nbsp;</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-12 form-group\">\n            <label>Reminder</label>\n            <textarea class=\"form-control\"\n                [ngClass]=\"{ 'is-valid': form.controls.reminder.valid, 'is-invalid': showError && form.controls.reminder.invalid }\"\n                formControlName=\"reminder\"></textarea>\n            <div class=\"text-muted\" *ngIf=\"form.controls.reminder.value.length <= 30\">{{ 30 - form.controls.reminder.value.length }} left</div>\n            <div class=\"text-danger\" *ngIf=\"form.controls.reminder.value.length > 30\">0 left</div>\n        </div>\n        <div class=\"col-12\">\n            <div *ngIf=\"forecast\">\n                <img src=\"http://openweathermap.org/img/wn/{{ forecast.weather[0].icon }}.png\"> <b>{{ forecast.main.temp }}°F </b> {{ forecast.weather[0].main }}, <small>{{ forecast.weather[0].description }}</small>\n            </div>\n            <p class=\"text-muted\" *ngIf=\"!forecast\">\n                Forecast not available\n            </p>\n        </div>\n    </div>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"col-4 text-left\">\n        <button type=\"button\" class=\"btn btn-danger\" *ngIf=\"reminderId\" (click)=\"deleteReminder()\">Delete</button>\n    </div>\n    <div class=\"col-8 text-right\">\n        <button type=\"button\" class=\"btn btn-outline-secondary mr-2\" (click)=\"activeModal.dismiss('')\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!reminderId\" (click)=\"addReminder()\">Add Reminder</button>\n        <button type=\"button\" class=\"btn btn-success\" *ngIf=\"reminderId\" (click)=\"addReminder(true)\">Update</button>\n    </div>\n</div>\n"
+module.exports = "<div class=\"modal-header\">\n    <h4 class=\"modal-title\">New Reminder</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"activeModal.dismiss('')\">\n        <span aria-hidden=\"true\">&times;</span>\n    </button>\n</div>\n<div class=\"modal-body\" [formGroup]=\"form\">\n    <div class=\"row\">\n        <div class=\"col-sm-6 form-group\">\n            <label>Date</label>\n            <div class=\"input-group\">\n                <div class=\"input-group-prepend\">\n                    <button class=\"btn btn-primary\" (click)=\"datePicker.toggle()\"><span class=\"zmdi zmdi-calendar\"></span></button>\n                </div>\n                <input type=\"text\"\n                    class=\"form-control\"\n                    [ngClass]=\"{ 'is-valid': form.controls.date.valid, 'is-invalid': showError && form.controls.date.invalid }\"\n                    placeholder=\"YYYY-MM-DD\"\n                    formControlName=\"date\"\n                    ngbDatepicker\n                    #datePicker=\"ngbDatepicker\"\n                    [firstDayOfWeek]=\"7\"\n                    (focus)=\"datePicker.open()\">\n            </div>\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>Time</label>\n            <ngb-timepicker formControlName=\"time\" [meridian]=\"meridian\" [spinners]=\"false\"></ngb-timepicker>\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>City</label>\n            <input type=\"text\"\n                class=\"form-control\"\n                [ngClass]=\"{ 'is-valid': form.controls.city.value.length }\"\n                formControlName=\"city\">\n        </div>\n        <div class=\"col-sm-6 form-group\">\n            <label>Color</label>\n            <div ngbDropdown>\n                <button class=\"btn w-100\" [ngClass]=\"'btn-' + form.controls.color.value\" ngbDropdownToggle>Select a color</button>\n                <div class=\"dropdown-menu w-100 p-0\" ngbDropdownMenu>\n                    <button class=\"bg-primary\" ngbDropdownItem (click)=\"form.controls.color.setValue('primary')\">&nbsp;</button>\n                    <button class=\"bg-info\" ngbDropdownItem (click)=\"form.controls.color.setValue('info')\">&nbsp;</button>\n                    <button class=\"bg-success\" ngbDropdownItem (click)=\"form.controls.color.setValue('success')\">&nbsp;</button>\n                    <button class=\"bg-warning\" ngbDropdownItem (click)=\"form.controls.color.setValue('warning')\">&nbsp;</button>\n                    <button class=\"bg-danger\" ngbDropdownItem (click)=\"form.controls.color.setValue('danger')\">&nbsp;</button>\n                    <button class=\"bg-secondary\" ngbDropdownItem (click)=\"form.controls.color.setValue('secondary')\">&nbsp;</button>\n                    <button class=\"bg-dark\" ngbDropdownItem (click)=\"form.controls.color.setValue('dark')\">&nbsp;</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"col-12 form-group\">\n            <label>Reminder</label>\n            <textarea class=\"form-control\"\n                [ngClass]=\"{ 'is-valid': form.controls.reminder.valid, 'is-invalid': showError && form.controls.reminder.invalid }\"\n                formControlName=\"reminder\"></textarea>\n            <div class=\"text-muted\" *ngIf=\"form.controls.reminder.value.length <= 30\">{{ 30 - form.controls.reminder.value.length }} left</div>\n            <div class=\"text-danger\" *ngIf=\"form.controls.reminder.value.length > 30\">0 left</div>\n        </div>\n        <div class=\"col-12\">\n            <div *ngIf=\"forecast\">\n                <img title=\"{{ forecast?.dt_txt ? 'Forecast for ' + forecast.dt_txt : 'Current weather' }}\" src=\"http://openweathermap.org/img/wn/{{ forecast.weather[0].icon }}.png\"> <b>{{ forecast.main.temp }}°F </b> {{ forecast.weather[0].main }}, <small>{{ forecast.weather[0].description }}</small>\n            </div>\n            <p class=\"text-muted\" *ngIf=\"forecast === null\">\n                Forecast not available\n            </p>\n            <p class=\"text-muted\" *ngIf=\"forecast === undefined\">\n                <i class=\"zmdi zmdi-refresh zmdi-hc-spin\"></i> Loading forecast\n            </p>\n        </div>\n    </div>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"col-4 text-left\">\n        <button type=\"button\" class=\"btn btn-danger\" *ngIf=\"reminderId\" (click)=\"deleteReminder()\">Delete</button>\n    </div>\n    <div class=\"col-8 text-right\">\n        <button type=\"button\" class=\"btn btn-outline-secondary mr-2\" (click)=\"activeModal.dismiss('')\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"!reminderId\" (click)=\"addReminder()\">Add Reminder</button>\n        <button type=\"button\" class=\"btn btn-success\" *ngIf=\"reminderId\" (click)=\"addReminder(true)\">Update</button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -754,7 +754,7 @@ var ModalRemindersComponent = /** @class */ (function () {
     ModalRemindersComponent.prototype.getWeather = function (reminder) {
         var _this = this;
         this.weatherService.getWeather(reminder.city).subscribe(function (data) {
-            _this.forecast = _this.updateTempToFarenheit(data);
+            _this.forecast = data;
         }, function (err) {
             _this.forecast = null;
         });
@@ -762,36 +762,10 @@ var ModalRemindersComponent = /** @class */ (function () {
     ModalRemindersComponent.prototype.getForecast = function (reminder, momentDate) {
         var _this = this;
         this.weatherService.getForecast(reminder.city, momentDate).subscribe(function (data) {
-            if (!data || !data.length) {
-                _this.forecast = null;
-                return;
-            }
-            var index = _this.findTimeIndex(data, momentDate);
-            _this.forecast = _this.updateTempToFarenheit(data[index]);
+            _this.forecast = data;
         }, function (err) {
             _this.forecast = null;
         });
-    };
-    ModalRemindersComponent.prototype.findTimeIndex = function (data, momentDate) {
-        for (var i = 0; i < data.length - 1; ++i) {
-            var aDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i].dt_txt).startOf('hour');
-            var bDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[i + 1].dt_txt).startOf('hour');
-            // search time is between two available forecast periods
-            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
-                return i;
-            }
-        }
-        var lastDate = moment__WEBPACK_IMPORTED_MODULE_5__(data[data.length - 1].dt_txt).startOf('hour');
-        // search time is after last available forecast time
-        if (momentDate.isSameOrAfter(lastDate)) {
-            return data.length - 1;
-        }
-        return 0;
-    };
-    ModalRemindersComponent.prototype.updateTempToFarenheit = function (weather) {
-        // Converting Kelvin to Farenheit
-        weather.main.temp = Math.round((weather.main.temp - 273.15) * 9 / 5 + 32);
-        return weather;
     };
     ModalRemindersComponent.ctorParameters = function () { return [
         { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"] },
@@ -1175,15 +1149,41 @@ var WeatherService = /** @class */ (function () {
         this.weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
     }
     WeatherService.prototype.getForecast = function (cityName, date) {
+        var _this = this;
         return this.http.get("" + this.forecastUrl + cityName + "&appid=" + this.apiKey)
             .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
-            return data.list.filter(function (forecast) {
+            var forecasts = data.list.filter(function (forecast) {
                 return moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.clone().startOf('days'));
             });
+            var index = _this.findTimeIndex(forecasts, date);
+            return _this.updateTempToFarenheit(forecasts[index]);
         }));
     };
     WeatherService.prototype.getWeather = function (cityName) {
-        return this.http.get("" + this.weatherUrl + cityName + "&appid=" + this.apiKey);
+        var _this = this;
+        return this.http.get("" + this.weatherUrl + cityName + "&appid=" + this.apiKey)
+            .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) { return _this.updateTempToFarenheit(data); }));
+    };
+    WeatherService.prototype.findTimeIndex = function (data, momentDate) {
+        for (var i = 0; i < data.length - 1; ++i) {
+            var aDate = moment__WEBPACK_IMPORTED_MODULE_4__(data[i].dt_txt).startOf('hour');
+            var bDate = moment__WEBPACK_IMPORTED_MODULE_4__(data[i + 1].dt_txt).startOf('hour');
+            // search time is between two available forecast periods
+            if (momentDate.isBetween(aDate, bDate) || momentDate.isSame(aDate, 'hour')) {
+                return i;
+            }
+        }
+        var lastDate = moment__WEBPACK_IMPORTED_MODULE_4__(data[data.length - 1].dt_txt).startOf('hour');
+        // search time is after last available forecast time
+        if (momentDate.isSameOrAfter(lastDate)) {
+            return data.length - 1;
+        }
+        return 0;
+    };
+    WeatherService.prototype.updateTempToFarenheit = function (weather) {
+        // Converting Kelvin to Farenheit
+        weather.main.temp = Math.round((weather.main.temp - 273.15) * 9 / 5 + 32);
+        return weather;
     };
     WeatherService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }

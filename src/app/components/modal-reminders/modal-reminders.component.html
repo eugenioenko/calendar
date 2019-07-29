@@ -59,10 +59,13 @@
         </div>
         <div class="col-12">
             <div *ngIf="forecast">
-                <img src="http://openweathermap.org/img/wn/{{ forecast.weather[0].icon }}.png"> <b>{{ forecast.main.temp }}°F </b> {{ forecast.weather[0].main }}, <small>{{ forecast.weather[0].description }}</small>
+                <img title="{{ forecast?.dt_txt ? 'Forecast for ' + forecast.dt_txt : 'Current weather' }}" src="http://openweathermap.org/img/wn/{{ forecast.weather[0].icon }}.png"> <b>{{ forecast.main.temp }}°F </b> {{ forecast.weather[0].main }}, <small>{{ forecast.weather[0].description }}</small>
             </div>
-            <p class="text-muted" *ngIf="!forecast">
+            <p class="text-muted" *ngIf="forecast === null">
                 Forecast not available
+            </p>
+            <p class="text-muted" *ngIf="forecast === undefined">
+                <i class="zmdi zmdi-refresh zmdi-hc-spin"></i> Loading forecast
             </p>
         </div>
     </div>
