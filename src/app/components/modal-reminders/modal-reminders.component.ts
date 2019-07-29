@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CalendarService } from 'src/app/services/calendar.service';
 import * as moment from 'moment';
 import { WeatherService } from 'src/app/services/weather.service';
+import { ReminderModel } from 'src/app/models/reminder.model';
 
 @Component({
     selector: 'app-modal-reminders',
@@ -72,18 +73,11 @@ export class ModalRemindersComponent implements OnInit {
         });
 
         if (reminder.city && reminder.city.length) {
-            const momentDates =  moment([reminder.year, reminder.month, reminder.day]);
-            this.weatherService.getForCity(reminder.city, momentDate).subscribe(data => {
-                if (!data || !data.length) {
-                    this.forecast = null;
-                    return;
-                }
-                this.forecast = data[0];
-                // Converting Kelvin to Farenheit
-                this.forecast.main.temp = Math.round((this.forecast.main.temp - 273.15) * 9 / 5 + 32);
-            }, err => {
-                this.forecast = null;
-            });
+            if (momentDate.startOf('days').isSame(moment().startOf('days'))) {
+                this.getWeather(reminder);
+            } else {
+                this.getForecast(reminder, momentDate);
+            }
         }
     }
 
@@ -121,6 +115,32 @@ export class ModalRemindersComponent implements OnInit {
     public deleteReminder(): void {
         this.calendarService.deleteReminder(this.reminderId);
         this.activeModal.close();
+    }
+
+    public getWeather(reminder: ReminderModel): void {
+        this.weatherService.getWeather(reminder.city).subscribe(data => {
+            this.forecast = this.updateTempToFarenheit(data);
+        }, err => {
+            this.forecast = null;
+        });
+    }
+
+    public getForecast(reminder: ReminderModel, momentDate: moment.Moment): void {
+        this.weatherService.getForecast(reminder.city, momentDate).subscribe(data => {
+            if (!data || !data.length) {
+                this.forecast = null;
+                return;
+            }
+            this.forecast = this.updateTempToFarenheit(data[0]);
+        }, err => {
+            this.forecast = null;
+        });
+    }
+
+    private updateTempToFarenheit(weather: any): any {
+        // Converting Kelvin to Farenheit
+        weather.main.temp = Math.round((weather.main.temp - 273.15) * 9 / 5 + 32);
+        return weather;
     }
 
 }

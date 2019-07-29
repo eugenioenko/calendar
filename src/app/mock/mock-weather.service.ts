@@ -3,7 +3,11 @@ import * as moment from 'moment';
 
 export class MockWeatherService {
 
-    public getForCity(cityName: string, date: moment.Moment): Observable<any> {
+    public getForecast(cityName: string, date: moment.Moment): Observable<any> {
+        return of(null);
+    }
+
+    public getWeather(cityName: string): Observable<any> {
         return of(null);
     }
 }

@@ -338,7 +338,7 @@ module.exports = "<div class=\"container\">\r\n    <app-month-selector></app-mon
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"day-container\" [ngClass]=\"{ 'is-weekend': weekend }\">\r\n    <span class=\"date-indicator\" [ngClass]=\"{ 'disabled': date.month() !== month }\" (click)=\"addReminder()\">{{ date.format('DD') }}</span>\r\n    <ul class=\"position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden\">\r\n        <li class=\"item-reminder badge w-100 px-1 text-left overflow-hidden\"\r\n            *ngFor=\"let reminder of reminders | slice:0:3\"\r\n            [ngClass]=\"'alert-'+reminder.color\"\r\n            (click)=\"viewReminder(reminder.id)\">\r\n            {{ reminder.reminder }}\r\n        </li>\r\n    </ul>\r\n    <div ngbDropdown>\r\n        <div class=\"badge btn-more btn-outline-secondary text-center w-100\" *ngIf=\"reminders?.length > 3\" ngbDropdownToggle>{{ reminders.length - 3 }} more</div>\r\n        <div class=\"dropdown-menu w-100 p-0\" ngbDropdownMenu>\r\n            <button class=\"overflow-hidden\" ngbDropdownItem\r\n                class=\"item-reminder overflow-hidden\"\r\n                *ngFor=\"let reminder of reminders\"\r\n                [ngClass]=\"'alert-'+reminder.color\"\r\n                (click)=\"viewReminder(reminder.id)\">\r\n                {{ reminder.reminder }}\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"day-container\" [ngClass]=\"{ 'is-weekend': weekend, 'is-today': isToday }\">\r\n    <span class=\"date-indicator\" [ngClass]=\"{ 'disabled': date.month() !== month }\" (click)=\"addReminder()\">{{ date.format('DD') }}</span>\r\n    <ul class=\"position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden\">\r\n        <li class=\"item-reminder badge w-100 px-1 text-left overflow-hidden\"\r\n            *ngFor=\"let reminder of reminders | slice:0:3\"\r\n            [ngClass]=\"'alert-'+reminder.color\"\r\n            (click)=\"viewReminder(reminder.id)\">\r\n            {{ reminder.reminder }}\r\n        </li>\r\n    </ul>\r\n    <div ngbDropdown>\r\n        <div class=\"badge btn-more btn-outline-secondary text-center w-100\" *ngIf=\"reminders?.length > 3\" ngbDropdownToggle>{{ reminders.length - 3 }} more</div>\r\n        <div class=\"dropdown-menu w-100 p-0\" ngbDropdownMenu>\r\n            <button class=\"overflow-hidden\" ngbDropdownItem\r\n                class=\"item-reminder overflow-hidden\"\r\n                *ngFor=\"let reminder of reminders\"\r\n                [ngClass]=\"'alert-'+reminder.color\"\r\n                (click)=\"viewReminder(reminder.id)\">\r\n                {{ reminder.reminder }}\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -382,7 +382,7 @@ module.exports = "<table class=\"table table-bordered\">\r\n    <thead>\r\n     
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9hcHAuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
 
 /***/ }),
 
@@ -497,7 +497,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  max-width: 947px;\n  min-width: 947px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvbXBvbmVudHMvY2FsZW5kYXItdmlldy9DOlxcY2FsZW5kYXJcXHNyY1xcYXBwXFxzZXJ2aWNlcy8uLlxcY29tcG9uZW50c1xcY2FsZW5kYXItdmlld1xcY2FsZW5kYXItdmlldy5jb21wb25lbnQuc2NzcyIsIi4uL2NvbXBvbmVudHMvY2FsZW5kYXItdmlldy9jYWxlbmRhci12aWV3LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQUE7RUFDQSxnQkFBQTtBQ0NKIiwiZmlsZSI6Ii4uL2NvbXBvbmVudHMvY2FsZW5kYXItdmlldy9jYWxlbmRhci12aWV3LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XHJcbiAgICBtYXgtd2lkdGg6IDk0N3B4O1xyXG4gICAgbWluLXdpZHRoOiA5NDdweDtcclxufVxyXG4iLCIuY29udGFpbmVyIHtcbiAgbWF4LXdpZHRoOiA5NDdweDtcbiAgbWluLXdpZHRoOiA5NDdweDtcbn0iXX0= */"
+module.exports = ".container {\n  max-width: 947px;\n  min-width: 947px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jYWxlbmRhci12aWV3L0M6XFxjYWxlbmRhci9zcmNcXGFwcFxcY29tcG9uZW50c1xcY2FsZW5kYXItdmlld1xcY2FsZW5kYXItdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9jYWxlbmRhci12aWV3L2NhbGVuZGFyLXZpZXcuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBQTtFQUNBLGdCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NhbGVuZGFyLXZpZXcvY2FsZW5kYXItdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xyXG4gICAgbWF4LXdpZHRoOiA5NDdweDtcclxuICAgIG1pbi13aWR0aDogOTQ3cHg7XHJcbn1cclxuIiwiLmNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogOTQ3cHg7XG4gIG1pbi13aWR0aDogOTQ3cHg7XG59Il19 */"
 
 /***/ }),
 
@@ -547,7 +547,7 @@ var CalendarViewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".day-container {\n  min-height: 125px;\n}\n\n.list-reminders {\n  height: 75px;\n  width: 130px;\n}\n\n.item-reminder {\n  text-overflow: ellipsis;\n  cursor: pointer;\n}\n\n.date-indicator {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.is-weekend {\n  background-color: #FCFCFF;\n}\n\n.is-weekend .date-indicator {\n  color: #6068d4;\n}\n\n.disabled {\n  opacity: 0.5;\n}\n\n.btn-more {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvbXBvbmVudHMvZGF5LXZpZXcvQzpcXGNhbGVuZGFyXFxzcmNcXGFwcFxcc2VydmljZXMvLi5cXGNvbXBvbmVudHNcXGRheS12aWV3XFxkYXktdmlldy5jb21wb25lbnQuc2NzcyIsIi4uL2NvbXBvbmVudHMvZGF5LXZpZXcvZGF5LXZpZXcuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksWUFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLHVCQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVBO0VBQ0ksZUFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLHlCQUFBO0FDQ0o7O0FEQ0k7RUFDSSxjQUFBO0FDQ1I7O0FER0E7RUFDSSxZQUFBO0FDQUo7O0FER0E7RUFDSSxlQUFBO0FDQUoiLCJmaWxlIjoiLi4vY29tcG9uZW50cy9kYXktdmlldy9kYXktdmlldy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kYXktY29udGFpbmVyIHtcclxuICAgIG1pbi1oZWlnaHQ6IDEyNXB4O1xyXG59XHJcblxyXG4ubGlzdC1yZW1pbmRlcnMge1xyXG4gICAgaGVpZ2h0OiA3NXB4O1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG59XHJcblxyXG4uaXRlbS1yZW1pbmRlciB7XHJcbiAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuLmRhdGUtaW5kaWNhdG9yIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHBhZGRpbmc6IDNweDtcclxufVxyXG5cclxuLmlzLXdlZWtlbmQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogICNGQ0ZDRkY7XHJcblxyXG4gICAgLmRhdGUtaW5kaWNhdG9yIHtcclxuICAgICAgICBjb2xvcjogIzYwNjhkNDtcclxuICAgIH1cclxufVxyXG5cclxuLmRpc2FibGVkIHtcclxuICAgIG9wYWNpdHk6IDAuNTtcclxufVxyXG5cclxuLmJ0bi1tb3JlIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4iLCIuZGF5LWNvbnRhaW5lciB7XG4gIG1pbi1oZWlnaHQ6IDEyNXB4O1xufVxuXG4ubGlzdC1yZW1pbmRlcnMge1xuICBoZWlnaHQ6IDc1cHg7XG4gIHdpZHRoOiAxMzBweDtcbn1cblxuLml0ZW0tcmVtaW5kZXIge1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4uZGF0ZS1pbmRpY2F0b3Ige1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHBhZGRpbmc6IDNweDtcbn1cblxuLmlzLXdlZWtlbmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkNGQ0ZGO1xufVxuLmlzLXdlZWtlbmQgLmRhdGUtaW5kaWNhdG9yIHtcbiAgY29sb3I6ICM2MDY4ZDQ7XG59XG5cbi5kaXNhYmxlZCB7XG4gIG9wYWNpdHk6IDAuNTtcbn1cblxuLmJ0bi1tb3JlIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */"
+module.exports = ".day-container {\n  min-height: 125px;\n}\n\n.list-reminders {\n  height: 75px;\n  width: 130px;\n}\n\n.item-reminder {\n  text-overflow: ellipsis;\n  cursor: pointer;\n}\n\n.date-indicator {\n  cursor: pointer;\n  padding: 3px;\n}\n\n.is-weekend {\n  background-color: #FCFCFF;\n}\n\n.is-weekend .date-indicator {\n  color: #6068d4;\n}\n\n.is-today .date-indicator {\n  background: #343a40;\n  color: #fff;\n  font-weight: bold;\n}\n\n.disabled {\n  opacity: 0.5;\n}\n\n.btn-more {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9DOlxcY2FsZW5kYXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGRheS12aWV3XFxkYXktdmlldy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9kYXktdmlldy9kYXktdmlldy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksdUJBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxlQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0kseUJBQUE7QUNDSjs7QURDSTtFQUNJLGNBQUE7QUNDUjs7QURLSTtFQUNJLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0FDRlI7O0FETUE7RUFDSSxZQUFBO0FDSEo7O0FETUE7RUFDSSxlQUFBO0FDSEoiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2RheS12aWV3L2RheS12aWV3LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRheS1jb250YWluZXIge1xyXG4gICAgbWluLWhlaWdodDogMTI1cHg7XHJcbn1cclxuXHJcbi5saXN0LXJlbWluZGVycyB7XHJcbiAgICBoZWlnaHQ6IDc1cHg7XHJcbiAgICB3aWR0aDogMTMwcHg7XHJcbn1cclxuXHJcbi5pdGVtLXJlbWluZGVyIHtcclxuICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG4uZGF0ZS1pbmRpY2F0b3Ige1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgcGFkZGluZzogM3B4O1xyXG59XHJcblxyXG4uaXMtd2Vla2VuZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAgI0ZDRkNGRjtcclxuXHJcbiAgICAuZGF0ZS1pbmRpY2F0b3Ige1xyXG4gICAgICAgIGNvbG9yOiAjNjA2OGQ0O1xyXG4gICAgfVxyXG59XHJcblxyXG4uaXMtdG9kYXkge1xyXG5cclxuICAgIC5kYXRlLWluZGljYXRvciB7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzM0M2E0MDtcclxuICAgICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIH1cclxufVxyXG5cclxuLmRpc2FibGVkIHtcclxuICAgIG9wYWNpdHk6IDAuNTtcclxufVxyXG5cclxuLmJ0bi1tb3JlIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4iLCIuZGF5LWNvbnRhaW5lciB7XG4gIG1pbi1oZWlnaHQ6IDEyNXB4O1xufVxuXG4ubGlzdC1yZW1pbmRlcnMge1xuICBoZWlnaHQ6IDc1cHg7XG4gIHdpZHRoOiAxMzBweDtcbn1cblxuLml0ZW0tcmVtaW5kZXIge1xuICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4uZGF0ZS1pbmRpY2F0b3Ige1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHBhZGRpbmc6IDNweDtcbn1cblxuLmlzLXdlZWtlbmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkNGQ0ZGO1xufVxuLmlzLXdlZWtlbmQgLmRhdGUtaW5kaWNhdG9yIHtcbiAgY29sb3I6ICM2MDY4ZDQ7XG59XG5cbi5pcy10b2RheSAuZGF0ZS1pbmRpY2F0b3Ige1xuICBiYWNrZ3JvdW5kOiAjMzQzYTQwO1xuICBjb2xvcjogI2ZmZjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5kaXNhYmxlZCB7XG4gIG9wYWNpdHk6IDAuNTtcbn1cblxuLmJ0bi1tb3JlIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -563,8 +563,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DayViewComponent", function() { return DayViewComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modal-reminders/modal-reminders.component */ "./src/app/components/modal-reminders/modal-reminders.component.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modal-reminders/modal-reminders.component */ "./src/app/components/modal-reminders/modal-reminders.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+
 
 
 
@@ -573,16 +576,19 @@ var DayViewComponent = /** @class */ (function () {
     function DayViewComponent(modalService) {
         this.modalService = modalService;
     }
+    DayViewComponent.prototype.ngOnInit = function () {
+        this.isToday = this.date.startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_2__().startOf('days'));
+    };
     DayViewComponent.prototype.addReminder = function () {
-        var modalRef = this.modalService.open(_modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_2__["ModalRemindersComponent"]);
+        var modalRef = this.modalService.open(_modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_3__["ModalRemindersComponent"]);
         modalRef.componentInstance.date = this.date;
     };
     DayViewComponent.prototype.viewReminder = function (id) {
-        var modalRef = this.modalService.open(_modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_2__["ModalRemindersComponent"]);
+        var modalRef = this.modalService.open(_modal_reminders_modal_reminders_component__WEBPACK_IMPORTED_MODULE_3__["ModalRemindersComponent"]);
         modalRef.componentInstance.reminderId = id;
     };
     DayViewComponent.ctorParameters = function () { return [
-        { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"] }
+        { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -620,7 +626,7 @@ var DayViewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jb21wb25lbnRzL21vZGFsLXJlbWluZGVycy9tb2RhbC1yZW1pbmRlcnMuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbW9kYWwtcmVtaW5kZXJzL21vZGFsLXJlbWluZGVycy5jb21wb25lbnQuc2NzcyJ9 */"
 
 /***/ }),
 
@@ -682,7 +688,6 @@ var ModalRemindersComponent = /** @class */ (function () {
         });
     };
     ModalRemindersComponent.prototype.createEditForm = function () {
-        var _this = this;
         var reminder = this.calendarService.getReminder(this.reminderId);
         var date = {
             year: reminder.year,
@@ -702,18 +707,12 @@ var ModalRemindersComponent = /** @class */ (function () {
             time: [time]
         });
         if (reminder.city && reminder.city.length) {
-            var momentDates = moment__WEBPACK_IMPORTED_MODULE_5__([reminder.year, reminder.month, reminder.day]);
-            this.weatherService.getForCity(reminder.city, momentDate).subscribe(function (data) {
-                if (!data || !data.length) {
-                    _this.forecast = null;
-                    return;
-                }
-                _this.forecast = data[0];
-                // Converting Kelvin to Farenheit
-                _this.forecast.main.temp = Math.round((_this.forecast.main.temp - 273.15) * 9 / 5 + 32);
-            }, function (err) {
-                _this.forecast = null;
-            });
+            if (momentDate.startOf('days').isSame(moment__WEBPACK_IMPORTED_MODULE_5__().startOf('days'))) {
+                this.getWeather(reminder);
+            }
+            else {
+                this.getForecast(reminder, momentDate);
+            }
         }
     };
     ModalRemindersComponent.prototype.addReminder = function (update) {
@@ -752,6 +751,31 @@ var ModalRemindersComponent = /** @class */ (function () {
         this.calendarService.deleteReminder(this.reminderId);
         this.activeModal.close();
     };
+    ModalRemindersComponent.prototype.getWeather = function (reminder) {
+        var _this = this;
+        this.weatherService.getWeather(reminder.city).subscribe(function (data) {
+            _this.forecast = _this.updateTempToFarenheit(data);
+        }, function (err) {
+            _this.forecast = null;
+        });
+    };
+    ModalRemindersComponent.prototype.getForecast = function (reminder, momentDate) {
+        var _this = this;
+        this.weatherService.getForecast(reminder.city, momentDate).subscribe(function (data) {
+            if (!data || !data.length) {
+                _this.forecast = null;
+                return;
+            }
+            _this.forecast = _this.updateTempToFarenheit(data[0]);
+        }, function (err) {
+            _this.forecast = null;
+        });
+    };
+    ModalRemindersComponent.prototype.updateTempToFarenheit = function (weather) {
+        // Converting Kelvin to Farenheit
+        weather.main.temp = Math.round((weather.main.temp - 273.15) * 9 / 5 + 32);
+        return weather;
+    };
     ModalRemindersComponent.ctorParameters = function () { return [
         { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"] },
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
@@ -785,7 +809,7 @@ var ModalRemindersComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".year-control {\n  width: 80px;\n}\n\n.navbar {\n  background-color: #627898;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvbXBvbmVudHMvbW9udGgtc2VsZWN0b3IvQzpcXGNhbGVuZGFyXFxzcmNcXGFwcFxcc2VydmljZXMvLi5cXGNvbXBvbmVudHNcXG1vbnRoLXNlbGVjdG9yXFxtb250aC1zZWxlY3Rvci5jb21wb25lbnQuc2NzcyIsIi4uL2NvbXBvbmVudHMvbW9udGgtc2VsZWN0b3IvbW9udGgtc2VsZWN0b3IuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0o7O0FERUE7RUFDSSx5QkFBQTtBQ0NKIiwiZmlsZSI6Ii4uL2NvbXBvbmVudHMvbW9udGgtc2VsZWN0b3IvbW9udGgtc2VsZWN0b3IuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIueWVhci1jb250cm9sIHtcclxuICAgIHdpZHRoOiA4MHB4O1xyXG59XHJcblxyXG4ubmF2YmFyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM2Mjc4OTg7XHJcbn0iLCIueWVhci1jb250cm9sIHtcbiAgd2lkdGg6IDgwcHg7XG59XG5cbi5uYXZiYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI3ODk4O1xufSJdfQ== */"
+module.exports = ".year-control {\n  width: 80px;\n}\n\n.navbar {\n  background-color: #627898;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb250aC1zZWxlY3Rvci9DOlxcY2FsZW5kYXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXG1vbnRoLXNlbGVjdG9yXFxtb250aC1zZWxlY3Rvci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tb250aC1zZWxlY3Rvci9tb250aC1zZWxlY3Rvci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSjs7QURFQTtFQUNJLHlCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21vbnRoLXNlbGVjdG9yL21vbnRoLXNlbGVjdG9yLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnllYXItY29udHJvbCB7XHJcbiAgICB3aWR0aDogODBweDtcclxufVxyXG5cclxuLm5hdmJhciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI3ODk4O1xyXG59IiwiLnllYXItY29udHJvbCB7XG4gIHdpZHRoOiA4MHB4O1xufVxuXG4ubmF2YmFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzYyNzg5ODtcbn0iXX0= */"
 
 /***/ }),
 
@@ -857,7 +881,7 @@ var MonthSelectorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jb21wb25lbnRzL21vbnRoLXZpZXcvbW9udGgtdmlldy5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbW9udGgtdmlldy9tb250aC12aWV3LmNvbXBvbmVudC5zY3NzIn0= */"
 
 /***/ }),
 
@@ -1130,15 +1154,19 @@ var WeatherService = /** @class */ (function () {
     function WeatherService(http) {
         this.http = http;
         this.apiKey = 'f51454523b4361d2dcb1456a4d890905';
-        this.apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+        this.forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+        this.weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
     }
-    WeatherService.prototype.getForCity = function (cityName, date) {
-        return this.http.get("" + this.apiUrl + cityName + "&appid=" + this.apiKey)
+    WeatherService.prototype.getForecast = function (cityName, date) {
+        return this.http.get("" + this.forecastUrl + cityName + "&appid=" + this.apiKey)
             .pipe(Object(rxjs_internal_operators_map__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             return data.list.filter(function (forecast) {
                 return moment__WEBPACK_IMPORTED_MODULE_4__(forecast.dt_txt).startOf('days').isSame(date.startOf('days'));
             });
         }));
+    };
+    WeatherService.prototype.getWeather = function (cityName) {
+        return this.http.get("" + this.weatherUrl + cityName + "&appid=" + this.apiKey);
     };
     WeatherService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }

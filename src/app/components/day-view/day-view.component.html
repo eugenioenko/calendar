@@ -1,4 +1,4 @@
-<div class="day-container" [ngClass]="{ 'is-weekend': weekend }">
+<div class="day-container" [ngClass]="{ 'is-weekend': weekend, 'is-today': isToday }">
     <span class="date-indicator" [ngClass]="{ 'disabled': date.month() !== month }" (click)="addReminder()">{{ date.format('DD') }}</span>
     <ul class="position-relative list-unstyled list-reminders m-0 p-1 overflow-hidden">
         <li class="item-reminder badge w-100 px-1 text-left overflow-hidden"

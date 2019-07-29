@@ -9,12 +9,13 @@ import * as moment from 'moment';
 })
 export class WeatherService {
     private apiKey = 'f51454523b4361d2dcb1456a4d890905';
-    private apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+    private forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+    private weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
     constructor(private http: HttpClient) { }
 
-    public getForCity(cityName: string, date: moment.Moment): Observable<any> {
-        return this.http.get(`${this.apiUrl}${cityName}&appid=${this.apiKey}`)
+    public getForecast(cityName: string, date: moment.Moment): Observable<any> {
+        return this.http.get(`${this.forecastUrl}${cityName}&appid=${this.apiKey}`)
             .pipe(
                 map((data: any) =>
                     data.list.filter((forecast: any) =>
@@ -22,5 +23,9 @@ export class WeatherService {
                     )
                 )
             );
+    }
+
+    public getWeather(cityName: string): Observable<any> {
+        return this.http.get(`${this.weatherUrl}${cityName}&appid=${this.apiKey}`);
     }
 }
