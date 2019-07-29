@@ -57,7 +57,7 @@
             <div class="text-muted" *ngIf="form.controls.reminder.value.length <= 30">{{ 30 - form.controls.reminder.value.length }} left</div>
             <div class="text-danger" *ngIf="form.controls.reminder.value.length > 30">0 left</div>
         </div>
-        <div class="col-12">
+        <div class="col-12" *ngIf="reminderId">
             <div *ngIf="forecast">
                 <img title="{{ forecast?.dt_txt ? 'Forecast for ' + forecast.dt_txt : 'Current weather' }}" src="http://openweathermap.org/img/wn/{{ forecast.weather[0].icon }}.png"> <b>{{ forecast.main.temp }}°F </b> {{ forecast.weather[0].main }}, <small>{{ forecast.weather[0].description }}</small>
             </div>
